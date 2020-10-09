@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1>Detalhe da cidade:</h1>
+
+    <p>Nome: {{ cidade.nome }} {% if cidade.capital %}<span class="badge badge-primary">Capital</span>{% endif %}</p>
+{% endblock %}
