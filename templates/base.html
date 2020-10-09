@@ -12,7 +12,7 @@
 
 <div class="container">
 
-    <div class="alert alert-danger" role="alert">Bem-vindo a página da {{ titulo }}</div>
+    <div class="alert alert-danger" role="alert">Bem-vindo a página da {% if titulo %} {{ titulo }}{% else %} SIDIA {%endif %}</div>
 
     {% block conteudo %}
 

@@ -2,7 +2,9 @@
 
 {% block conteudo %}
     <h1>Cidades cadastradas:</h1>
-
+<p>
+<a class="btn btn-primary" href="{% url 'cidades-cadastro' %}">Cadastrar nova cidade</a>
+</p>
     <ul class="list-group">
 
         {% for cidade in cidades %}
