@@ -42,3 +42,9 @@ django.setup()
 ```
 
 - Instalar o ipython (para um console mais poderoso): `pip install ipython`
+
+
+TO-DO
+=============
+
+ - Criar o CRUD de front-end para País e Estados

@@ -4,7 +4,12 @@
     <h1>Detalhe da cidade:</h1>
 
     <p>Nome: {{ cidade.nome }} {% if cidade.capital %}<span class="badge badge-primary">Capital</span>{% endif %}</p>
+    <p>Estado: {{ cidade.estado|default_if_none:'-' }}</p>
+    <p>País: {{ cidade.estado.pais }}</p>
     <div>
-    <a class="btn btn-danger" href="{% url 'cidades-remove' cidade.id %}">Apagar registro</a>
+        {% if request.user.is_authenticated %}
+        <a class="btn btn-danger" href="{% url 'cidades-remove' cidade.id %}">Apagar registro</a>
+        <a class="btn btn-info" href="{% url 'cidades-editar' cidade.id %}">Atualizar registro</a>
+        {% endif %}
     </div>
 {% endblock %}
