@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,8 @@
 <body>
 
 <div class="container">
+
+    <img src="{% static 'cadastros/img/logo.jpg' %}" class="img-fluid">
 
     <div class="alert alert-danger" role="alert">Bem-vindo a página da {% if titulo %} {{ titulo }}{% else %} SIDIA {%endif %}</div>
 
@@ -28,6 +31,8 @@
     {% block conteudo %}
 
     {% endblock %}
+
+    <img src="{% static 'img/sidia-logo.png' %}" class="rounded mx-auto d-block">
 
 </div>
 </body>

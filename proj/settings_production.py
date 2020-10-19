@@ -10,7 +10,7 @@ DATABASES = {
         'NAME': 'sidia',
         'USER': 'postgres',
         'PASSWORD': 'root',
-        'HOST': 'db',
+        'HOST': 'db_prod',
         'PORT': '5432',
     }
 }

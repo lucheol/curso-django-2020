@@ -4,28 +4,42 @@ services:
 
   app:
     build: .
-    ports:
-      - "8001:8000"
     volumes:
       - .:/code
     entrypoint: ['sh', 'run-django.sh']
     depends_on:
-      - db
+      - db_prod
+    networks:
+      - database
+      - web
 
-  db:
+  proxy:
+    image: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./etc/nginx:/etc/nginx/conf.d/
+      - ./log/nginx:/var/log/nginx
+      - ./static:/var/www/static
+    depends_on:
+      - app
+    networks:
+      - web
+
+  db_prod:
     image: mdillon/postgis
     environment:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: sidia
-    ports:
-      - "5433:5432"
     volumes:
       - sidia-data-prod:/var/lib/postgresql/data
-
-  adminer:
-    image: adminer
-    ports:
-      - 8081:8080
+    networks:
+      - database
 
 volumes:
   sidia-data-prod:
+
+networks:
+  web:
+  database:
