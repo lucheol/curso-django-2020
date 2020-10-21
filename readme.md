@@ -44,7 +44,8 @@ django.setup()
 - Instalar o ipython (para um console mais poderoso): `pip install ipython`
 
 
-TO-DO
+Para leitura
 =============
 
- - Criar o CRUD de front-end para País e Estados
+ - https://12factor.net/pt_br/
+ - https://wiki.python.org.br/GuiaDeEstilo

@@ -13,9 +13,12 @@
 
 <div class="container">
 
-    <img src="{% static 'cadastros/img/logo.jpg' %}" class="img-fluid">
-
     <div class="alert alert-danger" role="alert">Bem-vindo a página da {% if titulo %} {{ titulo }}{% else %} SIDIA {%endif %}</div>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
+    {% endif %}
 
     {% if messages %}
         {% for message in messages %}
