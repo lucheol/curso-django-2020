@@ -45,7 +45,22 @@ django.setup()
 
 
 Para leitura
-=============
+===
 
  - https://12factor.net/pt_br/
  - https://wiki.python.org.br/GuiaDeEstilo
+ 
+ 
+Atividade
+===
+
+Desenvolvimento de um sistema de ticket.
+
+- O usuário preenche um formulário com seu nome, email e descrição do problema.
+- Os atendentes podem listar os tickets e responder, com o status de RESOLVIDO ou EM ABERTO.
+- A cada resposta, um e-mail é enviado ao usuário com a resposta.
+- O usuário pode consultar o ticket na Web, informando o número/código do ticket.
+- Existe uma API que retorna detalhes do ticket a partir do ID.
+
+
+
