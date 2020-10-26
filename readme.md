@@ -63,11 +63,12 @@ Atividade
 
 Desenvolvimento de um sistema de ticket.
 
-- O usuário preenche um formulário com seu nome, email e descrição do problema.
-- Os atendentes podem listar os tickets e responder, com o status de RESOLVIDO ou EM ABERTO.
-- A cada resposta, um e-mail é enviado ao usuário com a resposta.
-- O usuário pode consultar o ticket na Web, informando o número/código do ticket.
-- Existe uma API que retorna detalhes do ticket a partir do ID.
+- (ADMIN) O usuário do sistema pode pegar o ticket para si. Ao fazer isso, registrar uma interação, colocar o ticket em ANDAMENTO e avisar o cliente por email.
+- (ADMIN) O usuário pode enviar uma resposta ao cliente, registrando a resposta na interação e enviando por email ao cliente.
+- (ADMIN) O usuário poderá cancelar ou finalizar o ticket, informando um motivo/resolução. Registrar Interação e enviar email.
+- (FRONT) O cliente poderá acessar uma área do ticket onde verá o histórico e poderá enviar uma resposta/mensagem.
+- (API) Disponibilizar informações do chamado via API.
 
+- Dicas: actions do admin, signals..
 
 

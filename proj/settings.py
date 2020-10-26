@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'cadastros'
+    'crispy_forms',
+    'cadastros',
+    'tickets'
 ]
 
 MIDDLEWARE = [
@@ -114,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-BR'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -134,6 +136,11 @@ STATIC_ROOT = 'static'
 STATICFILES_DIRS = [
     BASE_DIR / "static_files",
 ]
+
+MEDIA_ROOT = 'media'
+MEDIA_URL = 'files/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 #hack para importar os arquivos de settings de acordo com o ambiente
 # try:

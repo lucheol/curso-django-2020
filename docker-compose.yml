@@ -22,6 +22,7 @@ services:
       - ./etc/nginx:/etc/nginx/conf.d/
       - ./log/nginx:/var/log/nginx
       - ./static:/var/www/static
+      - ./media:/var/www/media
     depends_on:
       - app
     networks:
