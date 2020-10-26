@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   app:
-    build: .
+    image: sidia/local:1.0
     volumes:
       - .:/code
     entrypoint: ['sh', 'run-django.sh']
