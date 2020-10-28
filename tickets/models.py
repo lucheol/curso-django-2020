@@ -2,6 +2,9 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db import models
+from django.utils import timezone
+
+from tickets.utils import MongoHandler
 
 
 class Categoria(models.Model):
@@ -88,9 +91,21 @@ class Interacao(models.Model):
 
     def send_mail_message(self):
 
+        subject = f'{self.solicitacao} - Nova interação - {self.get_tipo_display()}'
+
         send_mail(
-            subject=f'{self.solicitacao} - Nova interação - {self.get_tipo_display()}',
+            subject=subject,
             message=self.descricao,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[self.solicitacao.email]
         )
+
+        email_data = {
+            'subject': subject,
+            'recipient': self.solicitacao.email,
+            'message': self.descricao,
+            'date': timezone.now()
+        }
+
+        mg = MongoHandler('tickets')
+        mg.insert('emails', email_data)

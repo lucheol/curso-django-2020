@@ -15,6 +15,25 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'sidia',
+#         'CLIENT': {
+#                 'host': '127.0.0.1',
+#                 'port': 27016,
+#                 'username': 'root',
+#                 'password': 'sidia',
+#             },
+#     }
+# }
+
+MONGO_HOST = 'localhost'
+MONGO_PORT = 27016
+MONGO_USER = 'root'
+MONGO_PASSWORD = 'sidia'
+MONGO_DB = 'tickets'
+
 AUTH_PASSWORD_VALIDATORS = []
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

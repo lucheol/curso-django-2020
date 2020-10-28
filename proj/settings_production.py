@@ -15,6 +15,13 @@ DATABASES = {
     }
 }
 
+
+MONGO_HOST = 'mongo_db'
+MONGO_PORT = 27017
+MONGO_USER = 'root'
+MONGO_PASSWORD = 'sidia'
+MONGO_DB = 'tickets'
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

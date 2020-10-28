@@ -38,6 +38,12 @@ services:
     networks:
       - database
 
+  mongo_db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: sidia
+
   portainer:
     image: portainer/portainer
     ports:

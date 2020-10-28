@@ -12,6 +12,14 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
+  mongo_db:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: sidia
+    ports:
+      - "27016:27017"
+
   adminer:
     image: adminer
     ports:
