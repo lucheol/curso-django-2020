@@ -8,3 +8,4 @@ django-filter==2.4.0
 django-crispy-forms==1.9.2
 
 pymongo==3.11.0
+django-tables2==2.3.3

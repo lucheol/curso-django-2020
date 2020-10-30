@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'crispy_forms',
+    'django_tables2',
     'cadastros',
     'tickets'
 ]
@@ -141,6 +142,8 @@ MEDIA_ROOT = 'media'
 MEDIA_URL = 'files/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 #hack para importar os arquivos de settings de acordo com o ambiente
 # try:

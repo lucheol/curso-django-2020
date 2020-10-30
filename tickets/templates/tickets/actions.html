@@ -1,0 +1,10 @@
+<div class="btn-group" role="group" aria-label="Basic example">
+  <a href="{% url 'detalhe-solicitacao-ticket' record.id %}" class="btn btn-success">V</a>
+    {% if not record.atendente %}
+  <a href="{% url 'assinar-solicitacao-ticket' record.id %}" class="btn btn-primary">A</a>
+    {% endif %}
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#respostaModal" data-id="{{ record.id }}">R</button>
+    {% if record.status == 'ongoing' %}
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#finalizarModal" data-id="{{ record.id }}">F</button>
+    {% endif %}
+</div>

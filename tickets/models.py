@@ -59,6 +59,73 @@ class Solicitacao(models.Model):
     #
     #     super().save(*args, **kwargs)
 
+    def registrar_atendente(self, user):
+
+        self.status = self.STATUS_ONGOING
+        self.atendente = user
+        self.save()
+
+        interacao_obj = Interacao.objects.create(
+            solicitacao=self,
+            tipo=Interacao.TIPO_ASSIGNED,
+            descricao=f'Solicitação assinada para o atendente {user.get_full_name()}',
+            atendente=user,
+        )
+
+        interacao_obj.send_mail_message()
+
+        return True
+
+    def registrar_resposta(self, user, mensagem):
+
+        self.atendente = user
+        self.save()
+
+        interacao_obj = Interacao.objects.create(
+            solicitacao=self,
+            tipo=Interacao.TIPO_TEAM_RESPONSE,
+            descricao=f'Nova resposta: {mensagem}',
+            atendente=user,
+        )
+
+        interacao_obj.send_mail_message()
+
+        return True
+
+    def cancelar(self, user, motivo):
+
+        self.atendente = user
+        self.status = self.STATUS_CANCELED
+        self.save()
+
+        interacao_obj = Interacao.objects.create(
+            solicitacao=self,
+            tipo=Interacao.TIPO_STATUS_CHANGE,
+            descricao=f'Ticket cancelado. Motivo: {motivo}',
+            atendente=user,
+        )
+
+        interacao_obj.send_mail_message()
+
+        return True
+
+    def finalizar(self, user, motivo):
+
+        self.atendente = user
+        self.status = self.STATUS_CLOSED
+        self.save()
+
+        interacao_obj = Interacao.objects.create(
+            solicitacao=self,
+            tipo=Interacao.TIPO_STATUS_CHANGE,
+            descricao=f'Ticket fechado. Motivo: {motivo}',
+            atendente=user,
+        )
+
+        interacao_obj.send_mail_message()
+
+        return True
+
 
 class Interacao(models.Model):
 

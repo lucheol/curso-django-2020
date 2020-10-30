@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block conteudo %}
+    <h1>Detalhe do ticket: {{ obj }}</h1>
+
+    <ul>
+        <li>Categoria: {{ obj.categoria }}</li>
+        <li>Nome: {{ obj.nome }}</li>
+        <li>Email: {{ obj.email }}</li>
+        <li>Assunto: {{ obj.assunto }}</li>
+        <li>Descrição: {{ obj.descricao }}</li>
+        <li>Arquivo: {% if obj.arquivo %}<a href="/{{ obj.arquivo.url }}">Download</a>{% else %}-{% endif %}</li>
+        <li>STATUS: {{ obj.get_status_display }}</li>
+        <li>ATENDENTE: {{ obj.atendente }}</li>
+        <li>Data da Solicitação: {{ obj.data_solicitacao }}</li>
+        <li>Última atualização: {{ obj.ultima_atualizacao }}</li>
+    </ul>
+
+<h2>Histórico</h2>
+
+{% for interacao in obj.interacoes.all %}
+
+    <ul>
+        <li>Tipo: {{ interacao.get_tipo_display }} </li>
+        <li>Descrição: {{ interacao.descricao }} </li>
+        <li>Atendente: {{ interacao.atendente }} </li>
+        <li>Data: {{ interacao.data_interacao }} </li>
+    </ul>
+
+{% endfor %}
+
+
+{% endblock %}

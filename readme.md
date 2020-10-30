@@ -57,18 +57,3 @@ Para leitura
  - https://12factor.net/pt_br/
  - https://wiki.python.org.br/GuiaDeEstilo
  
- 
-Atividade
-===
-
-Desenvolvimento de um sistema de ticket.
-
-- (ADMIN) O usuário do sistema pode pegar o ticket para si. Ao fazer isso, registrar uma interação, colocar o ticket em ANDAMENTO e avisar o cliente por email.
-- (ADMIN) O usuário pode enviar uma resposta ao cliente, registrando a resposta na interação e enviando por email ao cliente.
-- (ADMIN) O usuário poderá cancelar ou finalizar o ticket, informando um motivo/resolução. Registrar Interação e enviar email.
-- (FRONT) O cliente poderá acessar uma área do ticket onde verá o histórico e poderá enviar uma resposta/mensagem.
-- (API) Disponibilizar informações do chamado via API.
-
-- Dicas: actions do admin, signals..
-
-

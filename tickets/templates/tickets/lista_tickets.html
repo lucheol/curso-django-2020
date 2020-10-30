@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+
+{% block conteudo %}
+<h1>Tickets:</h1>
+<p>
+    <a class="btn btn-primary" href="{% url 'nova-solicitacao-ticket' %}">Novo ticket</a>
+</p>
+<div>
+    {% render_table table %}
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="respostaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enviar Resposta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Mensagem</span>
+                        </div>
+                        <textarea class="form-control" aria-label="Mensagem" name="mensagem" id="mensagem"></textarea>
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="tipo" id="tipo" value="resposta">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="finalizarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cancelar/Finalizar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select name="operacao" class="form-control" >
+                            <option value="c">Cancelar</option>
+                            <option value="f">Finalizar</option>
+                        </select>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Motivo</span>
+                        </div>
+
+                        <textarea class="form-control" aria-label="Motivo" name="motivo" id="motivo"></textarea>
+                        <input type="hidden" name="id" id="id" value="">
+                        <input type="hidden" name="tipo" id="tipo" value="finalizar">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#respostaModal').on('show.bs.modal', function(e) {
+
+    //get data-id attribute of the clicked element
+    var ticketId = $(e.relatedTarget).data('id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="id"]').val(ticketId);
+});
+    $('#finalizarModal').on('show.bs.modal', function(e) {
+
+    //get data-id attribute of the clicked element
+    var ticketId = $(e.relatedTarget).data('id');
+
+    //populate the textbox
+    $(e.currentTarget).find('input[name="id"]').val(ticketId);
+});
+</script>
+
+{% endblock %}
